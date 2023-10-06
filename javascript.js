@@ -22,7 +22,7 @@ function displayBook(book) {
     let container = document.getElementById('container');
     let card = document.createElement('div');
     card.className = "card";
-    card.innerHTML = `<ul><li class='bookTitle'>${book.title}</li><li>${book.author}</li><li>${book.pages}</li><li class='readStatus'>${book.read}</li></ul>`;
+    card.innerHTML = `<ul><li class='bookTitle'>Title: ${book.title}</li><li>Author: ${book.author}</li><li>Pages: ${book.pages}</li><li class='readStatus'>Read: ${book.read}</li></ul>`;
     card.innerHTML += `<button class='remove'>Remove Book</button><button class='markRead'>Mark as Read</button>`;
     container.appendChild(card);
     addCardListener(card);
@@ -58,7 +58,7 @@ function addCardListener(card){
       let card = event.target.parentElement;
       let title = card.querySelector('.bookTitle');
       //myLibrary = myLibrary.filter(function(el) { return el.title != title.value} );
-      myLibrary.splice(myLibrary.findIndex(el => el.title === title.innerText), 1);
+      myLibrary.splice(myLibrary.findIndex(el => title.innerText.includes(el.title)), 1);
       card.remove();
     })
 
@@ -66,9 +66,9 @@ function addCardListener(card){
       let card = event.target.parentElement;
       let title = card.querySelector('.bookTitle');
       let read = card.querySelector('.readStatus');
-      let i = myLibrary.findIndex(el => el.title === title.innerText);
+      let i = myLibrary.findIndex(el => title.innerText.includes(el.title));
       myLibrary[i].read = !myLibrary[i].read;
-      read.innerText = myLibrary[i].read;
+      read.innerText = `Read: ${myLibrary[i].read}`;
     })
 
 
