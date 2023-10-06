@@ -1,12 +1,10 @@
-const myLibrary = [];
+const myLibrary = [new Book('Moby Dick', 'Herman Melville', 7, true), new Book('The Hobbit', 'J.R.R. Tolkien', 295, false)];
 
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
-
-    return this;
 }
 
 function addBookToLibrary() {
@@ -20,3 +18,8 @@ function displayBook(book) {
     card.innerHTML = `<ul><li>${book.title}</li><li>${book.author}</li><li>${book.pages}</li><li>${book.read}</li></ul>`;
     container.appendChild(card);
 }
+
+myLibrary.forEach((element) => {
+  console.log(element);
+  displayBook(element);
+});
