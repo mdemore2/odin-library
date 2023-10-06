@@ -26,3 +26,11 @@ body{
     flex-direction: column;
     gap: 8px;
 }
+
+dialog[open]{
+    padding: 8px;
+    display: grid;
+    gap: 8px;
+    margin: 8px;
+    border-radius: 12px;
+}
